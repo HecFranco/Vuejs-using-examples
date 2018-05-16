@@ -3,6 +3,8 @@
       <!-- Interpolation / print content of variable-->
       <h2>{{ message }}</h2>
       <input type="text" v-model="message">
+      <hr/>
+      Show data variable information: 
       <pre>{{ $data }}</pre>
   </div>
 </template>

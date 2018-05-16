@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Propiedades de componentes en Vue.js</title>
+  <link rel="icon" href="https://vuejs.org/images/logo.png">
+</head>
+<body>
+  <!-- Vue Component -->
+  <main id="app">
+    <h1>Components in Vue.js</h1>
+    <pre>{{ $data }}</pre>
+    <!-- Show component -->
+    <show v-for="show in shows"
+                :name="show.name"
+                :poster="show.image.medium"
+                :rating="show.rating.average"
+                :genres="show.genres"
+                >
+    </show>
+    <pre>{{ $data }}</pre>
+  </main>
+  <!-- Templete for Show component -->
+  <template id="show">
+    <figure>
+      <img :src="poster" :alt="name">
+      <figcaption>
+        <h3>{{ name }}</h3>
+        <p>Calificación: <b>{{ rating }}</b></p>
+        <p>Géneros:</p>
+        <ul>
+          <li v-for="genre in genres" v-text="genre"></li>
+        </ul>
+      </figcaption>
+    </figure>
+  </template>
+  <!-- Scripts Vue -->
+  <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+  <script src="./js/main.js"></script>  
+</body>
+</html>

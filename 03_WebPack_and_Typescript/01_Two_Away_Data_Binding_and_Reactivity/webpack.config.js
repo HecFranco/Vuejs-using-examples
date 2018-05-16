@@ -10,10 +10,16 @@ module.exports = {
   context: path.join(basePath, 'src'),
   resolve: {
     extensions: ['.js', '.ts'],
+    alias: {
+      vue: 'vue/dist/vue.js',
+    },    
   },
   mode: 'development',
   entry: {
     app: './main.ts',
+    vendor: [
+      'vue',
+    ],    
     vendorStyles: [
       '../node_modules/bootstrap/dist/css/bootstrap.css',
     ],

@@ -1,10 +1,8 @@
 # 01 Boilerplate Using Vue-CLI and ES6
 
-In this sample we are going to setup a web project that can be easily managed by webpack.
+In this sample we are going to create our first Vue.js component and connect it with the DOM.
 
-We won't install anything related to Vue.js, just some basic plumbing.
-
-We will setup an initial **Vue-CLI** project.
+We will take a startup point sample [00 Boilerplate](../00_Boilerplate/).
 
 Summary steps:
 
@@ -14,30 +12,26 @@ Summary steps:
 
 Install [Node.js and npm](https://nodejs.org/en/) (v6.x.x or higher) if they are not already installed on your computer. 
 
-You will also need to have **Vue-CLI** installed globally.
-
-[Vue.js](https://vuex.vuejs.org/en/) provides an official CLI to quickly structure Single-page Applications (SPA). Provides **all-in-one** configurations for a modern frontend workflow. It only takes a few minutes, it's ready for development with: hot top-up, **lint-on-save** and ready-made versions:
-
-```bash
-`npm install -g @vue/cli`
-```
+You will also need to have **Vue-CLI** installed globally. [Vue.js](https://vuex.vuejs.org/en/) provides an official CLI to quickly structure Single-page Applications (SPA). Provides **all-in-one** configurations for a modern frontend workflow. It only takes a few minutes, it's ready for development with: hot top-up, **lint-on-save** and ready-made versions:
 
 > Verify that you are running at least node v6.x.x and npm 3.x.x by running `node -v`, `npm -v` and `vue -V` in a terminal/console window. Older versions may produce errors.
 
 ## Steps to build it
 
-- Create and navigate to the folder where you are going to create the empty project.
-
-- Execute `vue create webapp` to create a new **webapp** project, you will be prompted to answer some information about the project.Once you have completed this information successfully, the **package.json** file will be generated.
+- Copy the content from [00_Boilerplate](../00_Boilerplate/) and execute:
 
 ```bash
-vue create webapp
+npm install
 ```
 
+- Execute `npm run serve` to launch the project server.
+
 ```bash
-cd webapp
 npm run serve
 ```
+
+- Now you can view the result of installation accessing to [http://localhost:8080/](http://localhost:8080/).
+
 
 - Edit [/src/App.Vue](./src/App.Vue).
 

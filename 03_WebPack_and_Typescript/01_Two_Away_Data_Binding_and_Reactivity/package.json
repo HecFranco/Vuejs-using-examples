@@ -1,7 +1,7 @@
 {
-  "name": "02_boilerplate_using_webpack_and_typescript",
+  "name": "00_boilerplate",
   "version": "1.0.0",
-  "description": "Boilerplate Using Webpack and Typescript",
+  "description": "In this sample we are going to setup a web project that can be easily managed\r by webpack.",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -25,6 +25,7 @@
     "webpack-dev-server": "^3.1.4"
   },
   "dependencies": {
-    "bootstrap": "^3.3.7"
+    "bootstrap": "^3.3.7",
+    "vue": "^2.5.16"
   }
 }

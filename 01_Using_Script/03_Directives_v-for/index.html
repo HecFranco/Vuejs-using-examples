@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Using Conditionals Directives with Vue</title>
+</head>
+  <body>
+    <!-- Vue Element -->
+    <main id="app">
+      <!-- Iteration Directives - Arrays -->
+      <h1>List of films</h1>
+      <ol>
+        <li v-for = "film in films">{{film}}</li>
+      </ol>
+      <!-- Iteration Directives - Arrays Objects -->
+      <h1>List of fruits</h1>
+      <ol>
+        <ul v-for = "(fruit, index) in fruits">{{index}} - FRUIT: {{fruit.name}} - Seadon: {{fruit.season}} - Price: {{fruit.price}}</ul>
+      </ol>
+      <!-- Iteration Directives - Objects -->
+      <h1>List of Object fruit</h1>
+      <ol>
+        <ul v-for = "(value, key, index) in superfruit">{{index}} - {{key}} - {{value}}</ul>
+      </ol>
+      <hr/>
+      Show data variable information:
+      <pre>{{$data}}</pre>          
+    </main>
+    <!-- Scripts Vue -->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="js/main.js"></script>
+  </body>
+</html>

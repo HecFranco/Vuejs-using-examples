@@ -5,12 +5,15 @@
   </head>
   <body>
     <!-- Vue Element -->  
-    <vue-main>
+    <main id="app">
       <!-- Interpolation / print content of variable-->
       <h1>{{ text }}</h1>
       Can show the data using 'v-text':
       <h2 v-text="text"></h2>
-    </vue-main>
+      <hr/>
+      Show data variable information: 
+      <pre>{{ $data }}</pre>
+    </main>
     <!-- Scripts Vue -->
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
     <script src="js/main.js"></script>

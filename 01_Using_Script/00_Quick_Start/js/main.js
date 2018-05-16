@@ -1,5 +1,5 @@
 new Vue({
-  el: 'vue-main',
+  el: '#app',
   data: {
     text: 'hello Vue'
   }

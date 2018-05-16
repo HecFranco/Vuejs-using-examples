@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Title of the document</title>
+</head>
+
+<body>
+  <!-- Vue Element -->
+  <div id="components-demo">
+    <button @click="selected = 'father_1'">Load Father 1</button>
+    <button @click="selected = 'father_2'">Load Father 2</button>
+    <component :is="selected"></component>
+  </div>
+  <!-- Scripts Vue -->
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+  <script src="js/main.js"></script>
+</body>
+
+</html>

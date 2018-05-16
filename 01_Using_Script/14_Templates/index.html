@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Plantillas para componentes en Vue.js</title>
+  <link rel="icon" href="https://vuejs.org/images/logo.png">
+</head>
+<body>
+  <!-- Vue Component -->
+  <main id="app">
+    <h1>Components in Vue.js</h1>
+    <pre>{{ $data }}</pre>
+    <shows></shows>
+    <starwars-characters></starwars-characters>
+    <posts></posts>
+    <users inline-template>
+      <div>
+        <h2>Plantilla en un inline-template</h2>
+        <h3>Users de JSONplaceholder</h3>
+        <ul>
+          <li v-for="user in users">{{ user.email }}</li>
+        </ul>
+      </div>
+    </users>
+    <pre>{{ $data }}</pre>
+  </main>
+  <!-- template for component starwars -->
+  <template id="starwars">
+    <div>
+      <h2>Plantilla en una etiqueta template de html</h2>
+      <h3>Personajes StarWars</h3>
+      <ul>
+        <li v-for="character in characters">{{ character.name }}</li>
+      </ul>
+    </div>
+  </template>
+  <!-- template for component posts -->
+  <script type="text/template" id="posts">
+    <div>
+      <h2>Plantilla en un script template</h2>
+      <h3>Posts de JSONplaceholder</h3>
+      <ul>
+        <li v-for="post in posts">{{ post.title }}</li>
+      </ul>
+    </div>
+  </script>
+  <!-- Scripts Vue -->
+  <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+  <script src="./js/main.js"></script>
+</body>
+</html>

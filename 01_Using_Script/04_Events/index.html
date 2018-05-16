@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Title of the document</title>
+</head>
+
+<body>
+  <!-- Vue Element -->
+  <main id="app">
+    <!-- Methods -->
+    <h1>Methods</h1>
+    <button v-on:click="createFilm()">Create Film</button>
+    <form @submit.prevent="createFilm()">
+      <input type="text" v-model="newFilm"/>
+      <input type="submit" value="Save Film"/>
+    </form>
+    <hr/>
+    <button @click="removeFilm()">Remove Film</button>
+    <h1>List of films with remove option</h1>
+    <ol>
+      <li v-for = "(film, index) in films"> <button @click="removeFilm(index)">x</button> {{film}} </li>
+    </ol>
+    <hr/>
+    Show data variable information:
+    <pre>{{$data}}</pre>       
+  </main>
+  <!-- Scripts Vue -->
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <script src="js/main.js"></script>
+</body>
+
+</html>

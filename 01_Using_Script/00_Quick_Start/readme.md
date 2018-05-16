@@ -18,7 +18,7 @@ The Installation page provides more options of installing Vue. Note: We do not r
 <script src="https://cdn.jsdelivr.net/npm/vue"></script>
 ``` 
 
-# Prerequisites
+## Prerequisites
 
 > To make this type of starting configuration it is necessary to have an [index.html](./index.html) file that contains access to the Vue CDN library more than [js/main.js](./js/main.js) where our app code is located.
 
@@ -58,7 +58,7 @@ _[index.html](./index.html)_
 _[js/main.js](./js/main.js)_
 ```js
 new Vue({
-  el: 'vue-main',
+  el: '#app',
   data: {
     text: 'Hello Vue'
   }
@@ -76,11 +76,13 @@ _[index.html](./index.html)_
   </head>
   <body>
 ++  <!-- Vue Element -->  
-++  <vue-main>
+++  <main id="app">
 ++    <!-- Interpolation / print content of variable-->
 ++    <h1>{{ text }}</h1>
-++    Can show the data using 'v-text':
-++  </vue-main>
+++    <hr/>
+++    Show data variable information:
+++    <pre>{{ $data }}</pre>
+++  </main>
     <!-- Scripts Vue -->
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
     <script src="js/main.js"></script>
@@ -99,12 +101,15 @@ _[index.html](./index.html)_
   </head>
   <body>
     <!-- Vue Element -->  
-    <vue-main>
+    <main id="app">
       <!-- Interpolation / print content of variable-->
       <h1>{{ text }}</h1>
-      Can show the data using 'v-text':
+++    Can show the data using 'v-text':
 ++    <h2 v-text="text"></h2>
-    </vue-main>
+      <hr/>
+      Show data variable information:
+      <pre>{{ $data }}</pre>
+    </main>
     <!-- Scripts Vue -->
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
     <script src="js/main.js"></script>

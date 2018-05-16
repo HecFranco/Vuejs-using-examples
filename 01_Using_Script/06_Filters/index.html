@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <title>Title of the document</title>
+  </head>
+
+  <body>
+    <!-- Vue Element -->
+    <main id="app"> 
+      <!-- Filters -->
+      <h1>List of films order</h1>
+      <ol>
+        <li v-for = "(film, index) in orderFilms">{{film}} </li>
+      </ol> 
+      <hr>
+      <!-- Filters -->   
+      <h1>List of films filter</h1>
+      <input type="seacrh" v-model="searchingFilm" placeholder="search film" />
+      <ol>
+        <li v-for="(film, index) in filteredFilmsList">
+          {{film}}
+        </li>
+      </ol>
+      <hr>
+      <!-- Filters -->      
+      <h1>List of Fruits filter</h1>
+      <input type="seacrh" v-model="searchingFruit" placeholder="search film" />
+      <ol>
+        <li v-for="(fruit, index) in filteredFruitsList">
+          {{ fruit.name | capital }}
+        </li>
+      </ol>
+      <hr> 
+      Show data variable information:
+      <pre>{{$data}}</pre>       
+    </main>
+    <!-- Scripts Vue -->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="js/main.js"></script>
+  </body>
+
+</html>

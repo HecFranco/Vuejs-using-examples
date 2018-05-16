@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Title of the document</title>
+</head>
+
+<body>
+  <!-- Vue Element -->
+  <div id="components-demo">
+    <button-counter></button-counter>
+    <button-counter-inline-template inline-template>
+      <button v-on:click="count++">You clicked me {{ count }} times.</button>
+    </button-counter-inline-template>
+    <posts :count-post="100" :name-of-page="pageName"></posts>
+  </div>
+  <!-- Scripts Vue -->
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+  <script src="js/main.js"></script>
+</body>
+
+</html>
