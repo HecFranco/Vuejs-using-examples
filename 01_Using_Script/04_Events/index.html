@@ -15,13 +15,13 @@
       <input type="text" v-model="newFilm"/>
       <input type="submit" value="Save Film"/>
     </form>
-    <hr/>
+    <hr>
     <button @click="removeFilm()">Remove Film</button>
     <h1>List of films with remove option</h1>
     <ol>
       <li v-for = "(film, index) in films"> <button @click="removeFilm(index)">x</button> {{film}} </li>
     </ol>
-    <hr/>
+    <hr>
     Show data variable information:
     <pre>{{$data}}</pre>       
   </main>

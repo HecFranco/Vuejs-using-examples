@@ -7,16 +7,17 @@
 
 <body>
   <!-- Vue Element -->
-  <div id="components-demo">
-    <button-counter></button-counter>
-    <button-counter-inline-template inline-template>
-      <button v-on:click="count++">You clicked me {{ count }} times.</button>
-    </button-counter-inline-template>
-    <posts :count-post="100" :name-of-page="pageName"></posts>
-    <!-- Show the value of variable $data -->
+  <div id="vue-main">
+    <h1>List from Ajax</h1>
+    <ol v-if="posts">
+      <li v-for="(post, index) in posts">
+        {{post.title}}
+      </li>
+    </ol>
+    <span v-else>Loading ajax information..!!!</span>
     <hr> 
     Show data variable information:
-    <pre>{{$data}}</pre>     
+    <pre>{{$data}}</pre>  
   </div>
   <!-- Scripts Vue -->
   <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>

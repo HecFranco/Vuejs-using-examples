@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Básicos en Vue.js</title>
+  <link rel="icon" href="https://vuejs.org/images/logo.png">
+  <link rel="stylesheet" href="./css/style.css">
+  <style>
+    .fade-enter-active,
+    .fade-leave-active {
+      transition: opacity .5s;
+    }
+
+    .fade-enter,
+    .fade-leave-to
+    /* .fade-leave-active below version 2.1.8 */
+
+      {
+      opacity: 0;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Vue Element -->
+  <main id="app">
+    <h1>Basic en Vue.js</h1>
+    <hr>
+    <form id="ContactForm" class="ContactForm" @submit.prevent="sendForm">
+      <legend>¿Que deseas enviar?</legend>
+      <div align="center">
+        <!-- Inputs change de value of variable formType (true or false) -->
+        <input v-model="formType" :value="true" name="formType" type="radio" id="opinion">
+        <label for="opinion">Opinion</label>
+        <input v-model="formType" :value="false" name="formType" type="radio" id="budget">
+        <label for="budget">Budget</label>
+      </div>
+      <legend>
+        <span>{{ formTitle }}</span> Form</legend>
+      <input @keyup="validateData" type="text" name="name" title="Your name" placeholder="Write your name" pattern="^[A-Za-zÑñÁáÉéÍíÓóÚúÜü\s]+$"
+        required>
+      <transition name="fade">
+        <span v-show="message.name" v-text="message.name" class="ContactForm-message u-error"></span>
+      </transition>
+      <input @keyup="validateData" type="email" name="email" title="Your email" placeholder="Write your email" pattern="^[a-z0-9]+(\.[_a-z0-9]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,15})$"
+        required>
+      <transition name="fade">
+        <span v-show="message.email" v-text="message.email" class="ContactForm-message  u-error"></span>
+      </transition>
+
+      <!-- modify content of form -->
+      <template v-if="!formType">
+        <input @keyup="validateData" type="tel" name="phone" title="Your phone" placeholder="Write your phone" pattern="^[0-9]+$"
+          required>
+        <transition name="fade">
+          <span v-show="message.phone" v-text="message.phone" class="ContactForm-message  u-error"></span>
+        </transition>
+        <select name="services" required>
+          <option v-for="service in services" :value="service.id" v-text="service.name"></option>
+        </select>
+      </template>
+
+      <template v-else>
+        <input @keyup="validateData" type="text" name="subject" title="Subject to deal" placeholder="Subject to deal" required>
+        <transition name="fade">
+          <span v-show="message.subject" v-text="message.subject" class="ContactForm-message u-error"></span>
+        </transition>
+      </template>
+      <textarea @keyup="validateData" name="comments" title="Your comments" placeholder="Write your comments" cols="50" rows="5"
+        required></textarea>
+      <transition name="fade">
+        <span v-show="message.comments" v-text="message.comments" class="ContactForm-message u-error"></span>
+      </transition>
+      <input type="submit" value="enviar">
+      <transition name="fade">
+        <span v-show="message.serverResponse" v-html="message.serverResponse" :class="responseClassCSS" :style="responseStyleCSS"></span>
+      </transition>
+    </form>
+    <!-- Show the value of variable $data -->
+    <hr> 
+    Show data variable information:
+    <pre>{{$data}}</pre>  
+  </main>
+  <!-- Scripts Vue -->
+  <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+  <script src="./js/main.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Taller de introducción a Vue.js</title>
+  <link rel="icon" href="https://vuejs.org/images/logo.png">
+</head>
+<body>
+  <h1>Taller de introducción a Vue.js</h1>
+  <h2>Venta de producto</h2>
+  <main id="app">
+    <input-sale label="Precio $" v-model="price"></input-sale>
+    <input-sale label="Cantidad" v-model="amount"></input-sale>
+    <input-sale label="Descuento %" v-model="discount"></input-sale>
+    <input-sale label="Impuesto %" v-model="tax"></input-sale>
+    <p>Total: ${{ total }}</p>
+    <!-- Show the value of variable $data -->
+    <hr> 
+    Show data variable information:
+    <pre>{{$data}}</pre>      
+  </main>
+  <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+  <script src="./js/currency-validator.js"></script>
+  <script src="./js/main.js"></script>
+</body>
+</html>

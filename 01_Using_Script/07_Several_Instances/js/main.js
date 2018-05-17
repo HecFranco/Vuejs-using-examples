@@ -1,19 +1,19 @@
 const vue1 = new Vue({
-  el: 'vue-main',
+  el: '#vue_1',
   data: {
-    text: 'hello Vue'
+    text: 'hello first instance : Vue1'
   }
 });
 
 const vue2 = new Vue({
-  el: 'vue-main2',
+  el: '#vue_2',
   data: {
     text: 'hello second instance : Vue2'
   }
 });
 
 const vue3 = new Vue({
-  el: 'vue-main3',
+  el: '#vue_3',
   data: {
     text: 'hello third instance : Vue3'
   }

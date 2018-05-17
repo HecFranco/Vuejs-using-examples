@@ -10,7 +10,6 @@
   <!-- Vue Component -->
   <main id="app">
     <h1>Components in Vue.js</h1>
-    <pre>{{ $data }}</pre>
     <!-- Show component -->
     <show v-for="show in shows"
                 :name="show.name"
@@ -19,7 +18,10 @@
                 :genres="show.genres"
                 >
     </show>
-    <pre>{{ $data }}</pre>
+    <!-- Show the value of variable $data -->
+    <hr> 
+    Show data variable information:
+    <pre>{{$data}}</pre> 
   </main>
   <!-- Templete for Show component -->
   <template id="show">

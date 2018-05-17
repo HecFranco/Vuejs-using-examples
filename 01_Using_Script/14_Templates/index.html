@@ -10,10 +10,13 @@
   <!-- Vue Component -->
   <main id="app">
     <h1>Components in Vue.js</h1>
-    <pre>{{ $data }}</pre>
+    <hr>
     <shows></shows>
+    <hr>    
     <starwars-characters></starwars-characters>
+    <hr>    
     <posts></posts>
+    <hr>    
     <users inline-template>
       <div>
         <h2>Plantilla en un inline-template</h2>
@@ -22,8 +25,7 @@
           <li v-for="user in users">{{ user.email }}</li>
         </ul>
       </div>
-    </users>
-    <pre>{{ $data }}</pre>
+    </users> 
   </main>
   <!-- template for component starwars -->
   <template id="starwars">
