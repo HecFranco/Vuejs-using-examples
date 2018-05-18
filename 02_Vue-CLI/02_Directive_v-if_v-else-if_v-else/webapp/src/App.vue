@@ -6,10 +6,10 @@
       <strong v-if="score && score >= 5 && score <= 99">Your note is greater than 5, congratulations!</strong>
       <strong v-else-if="score && score == 100">EXCELLENT!</strong>
       <strong v-else>You have suspended</strong>
+      <!-- Show data variable information -->           
       <hr/>
-      <pre>
-        {{$data}}
-      </pre>
+       Show data variable information: 
+      <pre>{{ $data }}</pre>
   </div>
 </template>
 

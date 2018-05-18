@@ -22,6 +22,7 @@ _[index.html](./index.html)_
 --    <h1>{{ text }}</h1>
 --    Can show the data using 'v-text':
 --    <h2 v-text="text"></h2>
+      <!-- Show data variable information -->
       <hr/>
       Show data variable information:
       <pre>{{ $data }}</pre>
@@ -69,6 +70,7 @@ _[index.html](./index.html)_
 ++    <!-- Interpolation / print content of variable-->
 ++    <h2>{{ message }}</h2>
 ++    <input type="text" v-model="message">
+      <!-- Show data variable information -->
       <hr/>
       Show data variable information:
       <pre>{{ $data }}</pre>
@@ -104,6 +106,7 @@ _[index.html](./index.html)_
 ++    <hr/>
 ++    Can show the data using 'v-text':
 ++    <h2 v-text="message"></h2>
+      <!-- Show data variable information -->
       <hr/>
       Show data variable information:
       <pre>{{ $data }}</pre>

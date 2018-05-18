@@ -3,17 +3,18 @@
           <!-- Binding Class  -->
       <h1>List of Fruits filter Binding class</h1>
       <ol>
-        <li v-bind:class="{like: index == 2}" v-for="(fruit, index) in fruits">
+        <li v-bind:class="{like: index == 2}" v-for="(fruit, index) in fruits" :key="index">
           {{ fruit.name | capital }} ({{ index }})
         </li>
       </ol>
       <hr/>
       <h1>List of Fruits filter Binding class</h1>
       <ol>
-        <li @click="mark(index)" v-bind:class="{like: index == confirmed}" v-for="(fruit, index) in fruits">
-          {{ fruit.name | capital }} ({{ index }})
+        <li @click="mark(index)" v-bind:class="{like: index == confirmed}" v-for="(fruit, index) in fruits" :key="index" style="text-align:left;">
+          {{ fruit.name | capital }} - {{ fruit.season | capital }} - {{ fruit.price | capital }} ({{ index }})
         </li>
       </ol>
+      <!-- Show data variable information -->         
       <hr> 
       Show data variable information:
       <pre>{{$data}}</pre>  
@@ -21,13 +22,8 @@
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
-
 export default {
   name: 'app',
-  components: {
-    HelloWorld
-  },
   data() {
     return {
       fruits: [
@@ -61,6 +57,5 @@ export default {
 .like{
   background:green;
   color:white;
-  padding:20px;
 }
 </style>

@@ -3,22 +3,23 @@
       <!-- Filters -->
       <h1>List of films order</h1>
       <ol>
-        <li v-for = "(film, index) in orderFilms"> {{index}} - {{film}} </li>
+        <li v-for = "(film, index) in orderFilms" :key="index"> {{index}} - {{film}} </li>
       </ol> 
       <hr>
       <!-- Filters -->   
       <h1>List of films filter</h1>
       <input type="seacrh" v-model="searchingFilm" placeholder="search film" />
       <ol>
-        <li v-for="(film, index) in filteredFilmsList"> {{index}} - {{film}} </li>
+        <li v-for="(film, index) in filteredFilmsList" :key="index"> {{index}} - {{film}} </li>
       </ol>
       <hr>
       <!-- Filters -->      
       <h1>List of Fruits filter</h1>
       <input type="seacrh" v-model="searchingFruit" placeholder="search film" />
       <ol>
-        <li v-for="(fruit, index) in filteredFruitsList"> {{index}} - {{fruit.name | capital}} </li>
+        <li v-for="(fruit, index) in filteredFruitsList" :key="index"> {{index}} - {{fruit.name | capital}} </li>
       </ol>
+      <!-- Show data variable information -->          
       <hr> 
       Show data variable information:
       <pre>{{$data}}</pre>    

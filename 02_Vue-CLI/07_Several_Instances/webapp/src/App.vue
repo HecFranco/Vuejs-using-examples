@@ -1,9 +1,8 @@
 <template>
   <div id="app">
-    <img src="./assets/logo.png">
-    <vue_1/>
-    <vue_2/>
-    <vue_3/>
+    <vue_one/>
+    <vue_two/>
+    <vue_three/>
     <hr> 
     Show data variable information:
     <pre>{{$data}}</pre>
@@ -11,16 +10,16 @@
 </template>
 
 <script>
-import vue_1 from "./components/vue_1.vue";
-import vue_2 from "./components/vue_2.vue";
-import vue_3 from "./components/vue_3.vue";
+import vue_one from "./components/vue_one.vue";
+import vue_two from "./components/vue_two.vue";
+import vue_three from "./components/vue_three.vue";
 
 export default {
   name: "app",
   components: {
-    vue_1,
-    vue_2,
-    vue_3
+    vue_one,
+    vue_two,
+    vue_three
   },
   data() {
     return {

@@ -32,7 +32,7 @@
           <span v-show="message.phone" v-text="message.phone" class="ContactForm-message  u-error"></span>
         </transition>
         <select name="services" required>
-          <option v-for="service in services" :value="service.id" v-text="service.name"></option>
+          <option v-for="(service, index) in services" :value="service.id" v-text="service.name" :key="index"></option>
         </select>
       </template>
 
@@ -60,13 +60,8 @@
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
-
 export default {
   name: 'app',
-  components: {
-    HelloWorld
-  },
   data() {
     return {
       formType: true,

@@ -11,8 +11,9 @@
     <button @click="removeFilm()">Remove Film</button>
     <h1>List of films with remove option</h1>
     <ol>
-      <li v-for = "(film, index) in films"> <button @click="removeFilm(index)">x</button> {{film}} </li>
+      <li v-for = "(film, index) in films" :key="index"> <button @click="removeFilm(index)">x</button> {{film}} </li>
     </ol>
+    <!-- Show data variable information -->      
     <hr/>
     Show data variable information:
     <pre>{{$data}}</pre> 

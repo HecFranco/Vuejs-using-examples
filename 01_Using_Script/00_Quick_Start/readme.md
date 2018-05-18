@@ -79,6 +79,7 @@ _[index.html](./index.html)_
 ++  <main id="app">
 ++    <!-- Interpolation / print content of variable-->
 ++    <h1>{{ text }}</h1>
+++    <!-- Show data variable information -->
 ++    <hr/>
 ++    Show data variable information:
 ++    <pre>{{ $data }}</pre>
@@ -106,6 +107,7 @@ _[index.html](./index.html)_
       <h1>{{ text }}</h1>
 ++    Can show the data using 'v-text':
 ++    <h2 v-text="text"></h2>
+      <!-- Show data variable information -->
       <hr/>
       Show data variable information:
       <pre>{{ $data }}</pre>

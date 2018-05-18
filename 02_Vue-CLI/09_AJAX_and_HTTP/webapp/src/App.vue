@@ -8,6 +8,7 @@
       </li>
     </ol>
     <span v-else>Loading ajax information..!!!</span>
+    <!-- Show data variable information -->       
     <hr> 
     Show data variable information:
     <pre>{{$data}}</pre>
@@ -15,6 +16,7 @@
 </template>
 
 <script>
+// `npm install --save axios`
 import axios from 'axios';
 
 export default {

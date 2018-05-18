@@ -1,7 +1,8 @@
 <template>
   <div id="app">
     <h1>{{name + '  ' + surname}}</h1>
-    <h1>{{nameAndSurnames}}</h1>   
+    <h1>{{nameAndSurnames}}</h1>
+    <!-- Show data variable information -->    
     <hr> 
     Show data variable information:
     <pre>{{$data}}</pre> 
