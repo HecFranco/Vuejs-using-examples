@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Eventos Personalizados  en componentes en Vue.js</title>
+  <link rel="icon" href="https://vuejs.org/images/logo.png">
+  <link href="./css/style.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+  <!-- Vue Element -->
+  <main id="app">
+    <!-- Binding Class -->
+    <div :class="[ isShowing ? blur : '' ]">
+      <h1>Eventos Personalizados en componentes en Vue.js</h1>
+      <br>
+      <br>
+      <modal-btn @modal="toggleModal"></modal-btn>
+    </div>
+    <!-- Transition -->
+    <transition name="fade">
+      <modal v-if="isShowing" class="modal">
+        <modal-btn @modal="toggleModal"></modal-btn>
+      </modal>
+    </transition>
+  </main>
+  <!-- Template -->
+  <template id="modal">
+    <div>
+      <h2>Soy una ventana modal</h2>
+      <slot></slot>
+    </div>
+  </template>
+  <!-- Scripts Vue -->
+  <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>

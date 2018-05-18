@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Communication between components Vue.js</title>
+  <link rel="icon" href="https://vuejs.org/images/logo.png">
+</head>
+<body>
+  <h1>Communication between components Vue.js</h1>
+  <main id="app">
+    <hr>
+    <task-add></task-add>
+    <hr>
+    <task-list :task_list_prop_component="taskList_dataGlobal"></task-list>
+    <hr> 
+    Show data variable information:
+    <pre>{{$data}}</pre>
+  </main>
+  <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+  <script>
+    const eventBus = new Vue()
+
+    Vue.component('task-list', {
+      props: ['task_list_prop_component'],
+      template: `
+        <ul>
+          <li v-for="(task, index) in task_list_prop_component" v-text="task.text" :key="index"></li>
+        </ul>      
+      `,
+      created () {
+        eventBus.$on('task-add-emit', task => {
+          this.task_list_prop_component.push(task)
+        })
+      }
+    })
+
+    Vue.component('task-add', {
+      template: `
+        <form v-on:submit.prevent="addTask">
+          <input type="text" placeholder="Add new task" v-model="text">
+          <hr> 
+          Show data variable information:
+          <pre>{{$data}}</pre>            
+        </form>    
+      `,
+      data() {
+        return {
+          text: ''
+        }
+      },
+      methods: {
+        addTask() {
+          if (this.text != '') {
+            let task = {
+              text: this.text
+            }
+            eventBus.$emit('task-add-emit', task)
+            this.text = ''
+          }
+        }
+      }
+    })
+
+    const app = new Vue({
+      el: '#app',
+      data: {
+        taskList_dataGlobal: [
+          { text: 'Tarea 1' },
+          { text: 'Tarea 2' },
+        ]
+      },
+    })
+  </script>
+</body>
+</html>

@@ -4,30 +4,16 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Slots en componentes en Vue.js</title>
+  <title>Slots in components in Vue.js</title>
   <link rel="icon" href="https://vuejs.org/images/logo.png">
 </head>
 
 <body>
   <!-- Vue Element -->
   <main id="app">
-    <h1>Slots en componentes en Vue.js</h1>
-    <a href="../">regresar</a>
+    <h1>Slots in components in Vue.js</h1>
     <card></card>
-    <card>
-      <template slot="phrase">
-        <p>Entrena tu mente y cuerpo de tal manera que cualquier día salgas, y corras una maratón</p>
-      </template>
-      <template>
-        <img src="https://ed.team/sites/default/files/styles/perfil_en_views_200x200_/public/pictures/2017-11/mircha.jpg?itok=HOaoIACB">
-      </template>
-      <template slot="position">
-        <p>Profesor</p>
-      </template>
-      <template slot="name">
-        <h1>Jon</h1>
-      </template>
-    </card>
+    <!-- Component With Slots -->
     <card>
       <template slot="position">
         <p>
@@ -46,7 +32,7 @@
         <img src="https://ed.team/sites/default/files/styles/perfil_en_views_200x200_/public/2017-11/alvaro.jpg?itok=PMBfUIfi">
       </template>
     </card>
-    <cards :members="team">
+    <cards :members="team" >
       <template scope="data">
         <img :src="data.avatar">
       </template>
@@ -54,15 +40,10 @@
         <h3 v-text="data.nombre"></h3>
       </template>
     </cards>
-    <cards :members="team">
-      <template scope="data">
-        <img :src="data.avatar" style="border-radius: 50%;">
-      </template>
-      <template slot="name" scope="data">
-        <h2 v-text="data.nombre"></h2>
-      </template>
-    </cards>
-    <pre>{{ $data }}</pre>
+    <!-- Show the value of variable $data -->
+    <hr> 
+    Show data variable information:
+    <pre>{{$data}}</pre> 
   </main>
   <!-- Templete for card component -->
   <template id="card">

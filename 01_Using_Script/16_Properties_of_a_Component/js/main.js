@@ -1,3 +1,4 @@
+// Componente show
 Vue.component('show', {
   //props: [ 'name', 'poster', 'rating', 'genres' ],
   props: {
@@ -16,6 +17,7 @@ Vue.component('show', {
   template: '#show',
 })
 
+// App
 const mv = new Vue({
   el: '#app',
   mounted () {

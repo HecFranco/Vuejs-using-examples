@@ -1,0 +1,51 @@
+:root {
+    --color-primary: #41B883;
+    --color-secondary: #35495E;
+  }
+
+  body {
+    display: flex;
+    justify-content: center;
+    font-family: sans-serif;
+    height: 100vh;
+  }
+
+  button {
+    padding: 10px 15px;
+    outline: 0;
+    width: 60%;
+    border: solid solid var(--color-primary);
+    background-color: var(--color-secondary);
+    color: var(--color-primary);
+    cursor: pointer;
+  }
+
+  #app {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+  }
+
+  .modal {
+    position: absolute;
+    padding: 2rem;
+    width: 100%;
+    min-height: 100vh;
+    background-color: rgba(65, 184, 131, .25);
+    color: (var(--color-secondary));
+  }
+
+  .fade-enter-active, .fade-leave-active {
+    transition: opacity 0.2s ease-out;
+  }
+
+  .fade-enter, .fade-leave-to {
+    opacity: 0;
+  }
+
+  .blur {
+    filter: blur(1px);
+    opacity: .5;
+  }
