@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en" >
+
+<head>
+  <meta charset="UTF-8">
+  <title>Profile Card Vue.js transition and dynamic components </title>
+  <link href="https://fonts.googleapis.com/css?family=Rubik" rel="stylesheet">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+
+  
+      <link rel="stylesheet" href="css/style.css">
+
+  
+</head>
+
+<body>
+
+  <div class="container">
+  <div id="profile" class="profile">
+    <div class="user-info">
+      <div class="user-info_avatar"> 
+        <img src="http://placehold.it/250x250" alt="" />
+      </div>
+      <h2>{{name}}</h2>
+      <div class="profile_nav">
+        <ul>
+          <li @click="view = 'profile-about'; active = 'about'" 
+              v-bind:class="{active: active === 'about' }">ABOUT</li>
+          <li @click="view = 'profile-posts'; active='posts'"
+              v-bind:class="{active: active === 'posts' }"
+              >POSTS</li>
+          <li @click="view = 'profile-contact'; active='contact'"
+              v-bind:class="{active: active === 'contact' }">CONTACT</li>
+        </ul>
+      </div> 
+    </div>
+    <div class="content">
+      <span class="bg-float">
+        {{active}}
+      </span>
+      <transition name="slide-fade" mode="out-in">
+        <keep-alive>
+          <component v-bind:is="view"></component>
+        </keep-alive>
+      </transition>
+    </div>
+  </div>
+</div>
+<script type="text/x-template" id="profile-about">
+  <div>
+    <h3>About</h3>
+    <p>In lacinia venenatis mauris eget malesuada. Proin congue, erat vitae efficitur aliquam, felis felis convallis metus, ac ultrices libero ex eget tellus. Praesent tincidunt iaculis ultricies. Praesent porta, ipsum at iaculis congue, dui nisl rutrum urna, non vehicula ante massa quis elit.</p> <p> Proin tincidunt porta interdum. Praesent sollicitudin convallis libero. Maecenas ultricies, mauris eget interdum blandit, leo dui mattis est, vel convallis turpis nulla quis magna. Quisque vehicula neque at mi ornare, eu hendrerit nulla scelerisque. Aenean ullamcorper varius viverra. Etiam at diam eu massa tempus venenatis. Ut tempus nunc nulla, id semper nunc placerat in. </p>
+  </div>
+</script>
+<script type="text/x-template" id="profile-posts">
+  <div>
+  	<h3>Posts</h3>
+		<ul class="posts">
+      <li v-for="n in 3"><img src="http://placehold.it/75X75" alt="" class="tn" /> <h4>Post Title</h4></li>
+    </ul>
+  </div>
+</script>
+
+<script type="text/x-template" id="profile-contact">
+	<div class="">
+  <h3>Contact</h3>
+  </div>
+</script>
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/vue/2.0.8/vue.min.js'></script>
+
+  
+
+    <script  src="js/index.js"></script>
+
+
+
+
+</body>
+
+</html>

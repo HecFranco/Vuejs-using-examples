@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta name='viewport' content='width=device-width, initial-scale=1'>
+  <title>Title of the document</title>
+  <link rel="stylesheet" href="https://unpkg.com/buefy/lib/buefy.min.css">
+  <link rel="stylesheet" href="https://cdn.materialdesignicons.com/2.0.46/css/materialdesignicons.min.css">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.6/css/all.css">
+</head>
+
+<body>
+  <!-- Vue Element -->
+  <div id="app" class="container">
+
+    <section>
+      <p class="content">
+        <b>Selected:</b> {{ selected }}</p>
+      <b-field label="Find a JS framework">
+        <b-autocomplete rounded v-model="name" :data="filteredDataArray" placeholder="e.g. jQuery" icon="magnify" @select="option => selected =
+            option">
+          <template slot="empty">No results found</template>
+        </b-autocomplete>
+      </b-field>
+    </section>
+  </div>
+  <!-- Scripts Vue -->
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <script src="https://unpkg.com/buefy"></script>  
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lodash@4.17.4/lodash.min.js"></script>
+  <script src="https://unpkg.com/cleave.js/dist/cleave.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/sortablejs@1.6.1/Sortable.min.js"></script>
+  <script src="js/main.js"></script>
+
+</body>
+
+</html>

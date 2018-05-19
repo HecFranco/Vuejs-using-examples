@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en" >
+
+<head>
+  <meta charset="UTF-8">
+  <title>CKEditor v4 & Vue.js v2</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  <link rel='stylesheet prefetch' href='https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/flatly/bootstrap.min.css'>
+<link rel='stylesheet prefetch' href='https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css'>
+<link rel='stylesheet prefetch' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css'>
+
+      <link rel="stylesheet" href="css/style.css">
+
+  
+</head>
+
+<body>
+
+  
+<div class="heading">
+  <h1>CKEditor v4 & Vue.js v2</h1>
+  <h4>Playing around with a custom Vue CKEditor component.</h4>
+</div>
+
+<div class="container" id="app">
+  
+  <div class="form-group">
+    <ckeditor v-model="content"></ckeditor>
+  </div>
+  
+  <div class="form-group">
+    <h4>CKEditor's Content <sup><span class="label label-primary">LIVE</span></sup></h4>
+    <div v-html="content"></div>
+  </div>
+  
+  <div class="form-group">
+    <h4>CKEditor's HTML <sup><span class="label label-primary">LIVE</span></sup></h4>
+    <div v-text="content"></div>
+  </div>
+  
+</div>
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/vue/2.3.3/vue.js'></script>
+<script src='http://cdn.ckeditor.com/4.6.2/standard/ckeditor.js'></script>
+
+  
+
+    <script  src="js/index.js"></script>
+
+
+
+
+</body>
+
+</html>

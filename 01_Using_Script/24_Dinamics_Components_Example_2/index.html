@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Title of the document</title>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.4.3/css/bulma.min.css" rel="stylesheet" type="text/css">
+  <link href="./css/style.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+  <!-- Vue Element -->
+  <div id="app">
+    <section class="section">
+      <h1 class="title is-1">{{ greeting }}</h1>
+      <p>Easily swap out components with <code>&lt;component&gt;</code> tag. For smooth transitions, add a <code>&lt;transition&gt;</code> tag around the component.</p>
+      <br>
+      <div class="select">
+        <select v-model="compSwitcher">
+          <option value="card">Card Component</option>
+          <option value="message">Message Component</option>
+          <option value="hero">Hero Component</option>
+        </select>
+      </div>
+      <hr>
+      <transition name="fade" mode="out-in">
+        <component :is="compSwitcher" :title="title" :text="text">
+          <p>Extra text getting thrown in at the bottom...</p>
+        </component>
+      </transition>
+    </section>
+  </div>
+  
+  <template id="cardTemplate">
+    <div class="card">
+      <div class="card-content">
+        <h3 class="title is-3">
+          {{ title }}
+        </h3>
+        <p>
+          {{ text }}
+        </p>
+        <slot></slot>
+      </div>
+    </div>
+  </template>
+  
+  <template id="messageTemplate">
+    <article class="message">
+      <div class="message-header">
+        <p>{{ title }}</p>
+        <button class="delete"></button>
+      </div>
+      <div class="message-body">
+        <p>
+          {{ text }}
+        </p>
+        <slot></slot>
+      </div>
+    </article>
+  </template>
+  
+  <template id="heroTemplate">
+    <section class="hero is-primary">
+      <div class="hero-body">
+        <div class="container">
+          <h1 class="title">
+            {{ title }}
+          </h1>
+          <h2 class="subtitle">
+            {{ text }}
+          </h2>
+          <slot></slot>
+        </div>
+      </div>
+    </section>
+  </template>
+  <!-- Scripts Vue -->
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+  <script src="js/main.js"></script>
+</body>
+
+</html>

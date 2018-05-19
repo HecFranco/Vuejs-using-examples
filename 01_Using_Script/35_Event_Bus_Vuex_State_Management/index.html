@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Title of the document</title>
+</head>
+
+<body>
+  <!-- Vue Element -->
+  <main id="app">
+    <hr>
+    <task-add></task-add>
+    <hr>
+    <task-list :task_list_prop_component="taskList_dataGlobal"></task-list>
+    <hr> Show data variable information:
+    <pre>{{$data}}</pre>
+  </main>
+  <!-- Scripts Vue -->
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <script src="https://unpkg.com/vuex@2.0.0/dist/vuex.js"></script>
+  <script>
+    const state = {
+      taskList_dataGlobal: [
+        {
+          id: 0,
+          task: 'Tarea 1',
+          completed: false
+        },
+        {
+          id: 1,
+          task: 'Tarea 2',
+          completed: false
+        },
+        {
+          id: 2,
+          task: 'Tarea 3',
+          completed: false
+        },
+        {
+          id: 3,
+          task: 'Tarea 4',
+          completed: false
+        },
+      ]
+    }
+    const getters = {
+      getTaskList: state => state.taskList
+    }
+    const mutations = {
+      ADD_TASK: (state, payload) => {
+        const newTask = {
+          id: payload.id,
+          task: payload.task,
+          completed: false
+        }
+        state.taskList.unshift(newTask)
+      },
+      TOGGLE_TASK: (state, payload) => {
+        let item = state.taskList.find(task => task.id === payload)
+        item.completed = !item.completed
+      },
+      DELETE_TASK: (state, payload) => {
+        let index = state.taskList.findIndex(task => task.id === payload)
+        state.taskList.splice(index,1)
+      },
+    }
+    const actions = {
+      addTask: (context, payload)=>{
+        context.commit('ADD_TASK', payload)
+      },
+      toggleTask: (context, payload)=>{
+        context.commit('TOGGLE_TASK', payload)
+      },
+      deleteTask: (context, payload)=>{
+        context.commit('TOGGLE_TASK', payload)
+      }
+    }
+    
+    const store = new Vuex.Store({
+      state: state,
+      getters: getters,
+      mutations: mutations,
+      actions: actions
+    })
+
+    const eventBus = new Vue()
+
+    Vue.component('task-list', {
+      computed:{
+        taskList(){
+          return this.$store.getters.getTasList;
+        }
+      },
+      methods:{
+        toggleTask(id){
+          this.$store.dispatch('toggleTask', id)
+        },
+        deleteTask(id){
+          this.$store.dispatch('deleteTask', id)
+        },
+      },
+      template: `
+        <ul class="ToDo-tasks">
+          <li 
+            v-for="task in taskList" 
+            :key="task.id" 
+            :class="{completed:task.completed}" 
+            class="ToDo-task"
+            v-text="task.text"
+            @click="toggleTask(task.id)"
+            @dblclick="deleteTask(task.id)
+            >
+              {{task.task}}
+          </li>
+        </ul>
+      `
+    })
+
+    Vue.component('task-add', {
+      template: `
+        <form v-on:submit.prevent="addTask">
+          <hr>
+          <input type="text" placeholder="Add task" v-model="text">
+          <br>
+          Show the value of input:
+          <pre>{{$data}}</pre>
+        </form>
+        `,
+      data() {
+        return {
+          text: ''
+        }
+      },
+      updated(){
+        console.log('Input modified!!!', this.text);
+      },
+      methods: {
+        addTask() {
+          if (this.text != '') {
+            let task = {
+              text: this.text
+            }
+            console.log('Task Sended : ', task);
+            eventBus.$emit('task-add', task)
+            this.text = ''
+          }
+        }
+      }
+    })
+
+    const app = new Vue({
+      store: store,
+      el: '#app'
+    })
+  </script>
+</body>
+
+</html>

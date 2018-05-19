@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <meta name='viewport' content='width=device-width, initial-scale=1'>
+  <title>Title of the document</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/flatly/bootstrap.min.css">
+  <link rel="stylesheet" href="./css/styles.css">
+</head>
+
+<body>
+  <!-- Vue Element -->
+  <div class="heading">
+      <h1>Custom Vue Modal</h1>
+      <h4>Creating a simple modal window using Vue.js</h4>
+    </div>
+    
+    <div class="container" id="app">
+      
+      <div class="form-group">
+        <button class="btn btn-primary" @click.prevent="showModalOne = !showModalOne">Open Modal One</button>
+        <button class="btn btn-primary" @click.prevent="showModalTwo = !showModalTwo">Open Modal Two</button>
+      </div>
+    
+      <div class="customModal" v-if="showModalOne">
+        <div class="customModalTitle">
+          <button class="close" @click.prevent="showModalOne = !showModalOne">&times;</button>
+          Modal One
+        </div>
+        <div class="customModalBody">
+          <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Magnam tenetur veritatis saepe natus? Ex sunt, maxime quod hic repudiandae incidunt eligendi autem dignissimos mollitia, vel laborum quasi expedita ullam voluptate veniam nesciunt sequi est necessitatibus. Eum repellat nam animi laudantium?</p>
+        </div>
+        <div class="customModalFooter">
+          <button class="btn btn-primary" @click.prevent="showModalOne = !showModalOne">Cancel</button>
+        </div>
+      </div>
+    
+      <div class="customModal" v-if="showModalTwo">
+        <div class="customModalTitle">
+          <button class="close" @click.prevent="showModalTwo = !showModalTwo">&times;</button>
+          Modal Two
+        </div>
+        <div class="customModalBody">
+          <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Magnam tenetur veritatis saepe natus? Ex sunt, maxime quod hic repudiandae incidunt eligendi autem dignissimos mollitia, vel laborum quasi expedita ullam voluptate veniam nesciunt sequi est necessitatibus. Eum repellat nam animi laudantium?</p>
+        </div>
+      </div>
+    
+    </div>
+  <!-- Scripts Vue -->
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <script src="js/main.js"></script>
+
+</body>
+
+</html>

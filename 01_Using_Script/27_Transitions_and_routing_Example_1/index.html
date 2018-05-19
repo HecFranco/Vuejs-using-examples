@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en" >
+
+<head>
+  <meta charset="UTF-8">
+  <title>Vue Transitions</title>
+  
+  
+  <link rel='stylesheet prefetch' href='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-beta.3/css/bootstrap.css'>
+<link rel='stylesheet prefetch' href='https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.css'>
+
+      <link rel="stylesheet" href="css/style.css">
+
+  
+</head>
+
+<body>
+
+  <div id="app">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+      <router-link class="navbar-brand" :to="{ path: '/' }">Welcome</router-link>
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <router-link class="nav-link" :to="{ path: '/hello' }">Hello</a>
+          </li>
+          <li class="nav-item">
+            <router-link class="nav-link" :to="{ path: '/hello-again' }">Hello Again</a>
+          </li>
+        </ul>
+    </nav>
+    <div class="container col-10">
+      <div class="jumbotron mt-3">
+        <router-view keep-alive></router-view>
+      </div>
+    </div>    
+</div>
+
+<template id="welcome-template">
+  <transition name="component-fade" appear>
+    <div class="container">
+      <h1 class="display-6">Change between components "Hello" & "Hello Again"!</h1>
+      <hr class="my-4">
+      <p class="lead">Simple example of spa page with vue-router and transitions between components</p>
+      <ul class="list col-3">
+        <li>
+          <a target="_blank" href="https://router.vuejs.org/en/">
+            <button type="button" class="btn btn-primary">Vue Router</button>
+          </a>
+        </li>
+        <li>
+          <a target="_blank" href="https://vuejs.org/v2/guide/transitions.html">
+            <button type="button" class="btn btn-primary">Vue Transitions</button>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </transition>
+</template>
+
+<template id="hello-template">
+  <transition name="component-fade" mode="out-in" appear>
+    <div class="container">
+      <h1 class="display-6 abs">Hello World!</h1>
+    </div>
+  </transition>
+</template>
+
+<template id="hello-again-template">
+  <transition name="component-fade" appear>
+    <div class="container">
+      <h1 class="display-6 abs">Hello Again!</h1>
+    </div>
+  </transition>
+</template>
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.13/vue.js'></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/vue-router/3.0.1/vue-router.js'></script>
+
+  
+
+    <script  src="js/index.js"></script>
+
+
+
+
+</body>
+
+</html>

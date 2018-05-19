@@ -1,0 +1,44 @@
+*
+  margin 0
+  padding 0
+  box-sizing border-box
+  
+:root
+  font 100%/1.4 sans-serif  
+nav
+  position fixed
+  z-index 1
+  width 100%
+  background-color #222
+  display flex
+  justify-content space-around
+  line-height 3em
+  a
+    color #FFF
+  .router-link-exact-active
+    color gold
+  
+.page
+  height 100vh
+  display flex
+  h1
+    color #FFF
+    margin auto
+    
+ .HomePage
+   background-color #ff8383
+ .AboutPage
+   background-color #82c8a0
+ .ContactPage
+   background-color #ffa07a
+ .NotFoundPage
+   background-color #C4D1CC
+   
+   
+.page-enter-active 
+.page-leave-active
+  transition all .7s
+.page-enter
+.page-leave-to
+  opacity 0
+  transform scale(0);

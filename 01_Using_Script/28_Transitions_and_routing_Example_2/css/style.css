@@ -1,0 +1,53 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+:root {
+  font: 100%/1.4 sans-serif;
+}
+nav {
+  position: fixed;
+  z-index: 1;
+  width: 100%;
+  background-color: #222;
+  display: flex;
+  justify-content: space-around;
+  line-height: 3em;
+}
+nav a {
+  color: #fff;
+}
+nav .router-link-exact-active {
+  color: #ffd700;
+}
+.page {
+  height: 100vh;
+  display: flex;
+}
+.page h1 {
+  color: #fff;
+  margin: auto;
+}
+.HomePage {
+  background-color: #ff8383;
+}
+.AboutPage {
+  background-color: #82c8a0;
+}
+.ContactPage {
+  background-color: #ffa07a;
+}
+.NotFoundPage {
+  background-color: #c4d1cc;
+}
+.page-enter-active,
+.page-leave-active {
+  transition: all 0.7s;
+}
+.page-enter,
+.page-leave-to {
+  opacity: 0;
+  -webkit-transform: scale(0);
+          transform: scale(0);
+}

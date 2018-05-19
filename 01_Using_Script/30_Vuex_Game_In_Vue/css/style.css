@@ -1,0 +1,11 @@
+#app {
+	padding-top: 20px;
+}
+
+[v-cloak] { 
+  display: none; 
+}
+
+.customBtn {
+  width: 120px;
+}

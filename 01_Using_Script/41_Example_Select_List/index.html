@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <meta name='viewport' content='width=device-width, initial-scale=1'>
+  <title>Title of the document</title>
+  <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
+  <link rel="stylesheet" href="./css/styles.css">
+</head>
+
+<body>
+  <!-- Vue Element -->
+  <title>Vue Autocomplete</title>
+
+  <div id="app">
+    <autocomplete-dropdown :options="options" @select-item="onOptionSelect">
+
+      <template slot="item" slot-scope="option">
+        <span>
+          <img :src="option.thumbnail">
+        </span>
+      </template>
+
+    </autocomplete-dropdown>
+  </div>
+  <!-- Scripts Vue -->
+  <script id="autocomplete-tpl" type="template/x-template">
+    <div class="autocomplete">
+      <p class="control icon-right">
+        <input type="text" class="input-dropdown"
+        placeholder=""
+        @input="onInput($event.target.value)" 
+        @blur="isOpened = false"
+        @keyup.enter="select"
+        @keyup.tab="select"
+        @keydown.down="onDown"
+        @keydown.up="onUp"
+        @keyup.esc="isOpen = false"
+        ref="dropdown"
+        v-model="search"/>
+        <i class="chevron bottom" 
+          @click="toggle"
+          :class="{'chevron-active' : isOpened, 'chevron-inactive' : !isOpened}"></i>
+      </p>
+      <transition	name="fade" mode="in-out">
+          <ul class="options-list" v-show="isOpened">
+            <li v-for="(option, i) in filteredItems"
+                @mouseenter="selected = i"
+                @mousedown="select"
+                :class="{'selected': i === selected}">
+              {{ option.name }}
+              <slot name="item" :title="option.name" :thumbnail="option.thumbnail">
+            </li>
+          </ul>
+      </transition>
+    </div>
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/vue-select/2.4.0/vue-select.js"></script>
+  <script src="js/main.js"></script>
+
+</body>
+
+</html>

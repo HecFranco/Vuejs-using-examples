@@ -1,0 +1,8 @@
+body
+{background-image: url(https://wallpaperscraft.com/image/butterflies_texture_background_pattern_9681_2560x1600.jpg);
+background-size:cover;
+} 
+.carousel-3d-slide {
+      height: auto !important;
+      background-color: rgba(0, 0, 0, 0.25) !important;
+    }

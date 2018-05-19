@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" >
+
+<head>
+  <meta charset="UTF-8">
+  <title>vue-router transitions</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  
+      <link rel="stylesheet" href="css/style.css">
+
+  
+</head>
+
+<body>
+
+  
+<div id="app">
+  <nav>
+    <router-link to="/">Home</router-link>
+    <router-link to="/about">About</router-link>
+    <router-link to="/contact">Contact</router-link>
+  </nav>
+  <transition name="page" mode="out-in">
+    <router-view></router-view>
+  </transition>
+</div>
+  <script src='https://unpkg.com/vue/dist/vue.js'></script>
+<script src='https://unpkg.com/vue-router/dist/vue-router.js'></script>
+
+  
+
+    <script  src="js/index.js"></script>
+
+
+
+
+</body>
+
+</html>

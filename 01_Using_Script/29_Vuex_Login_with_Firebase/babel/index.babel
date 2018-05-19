@@ -1,0 +1,244 @@
+
+// Firebase setup
+const config = {
+    apiKey: "AIzaSyCAOHyN1YOPG7b4iy6YvcDoxF-X9Xopkig",
+    authDomain: "vuex-turnout-base.firebaseapp.com",
+    databaseURL: "https://vuex-turnout-base.firebaseio.com",
+    projectId: "vuex-turnout-base",
+    storageBucket: "vuex-turnout-base.appspot.com",
+    messagingSenderId: "1090400150599"
+};
+
+// var firebase = new Firebase("https://turnout-25be4.firebaseio.com");
+const firebaseApp = firebase.initializeApp(config)
+const eventsRef = firebaseApp.database().ref().child('events')
+
+// Add Events
+const AddingEvents = Vue.component('AddingEvents', {
+  template:'#addingEvents',
+  name: 'addingEvents',
+  data() {
+    return {
+      event: {
+        title: '',
+        description: '',
+        date: '',
+        location: '',
+        email: ''
+      },
+      showForm: false
+    }
+  },
+  methods: {
+    addEvent() {
+      this.event.email = this.$store.state.user.email;
+      eventsRef.push(this.event)
+    }
+  }
+})
+//Event Item Component
+const EventItem = Vue.component('EventItem', {
+  template:'#eventItem',
+  name: 'eventItem',
+  props: ['event']
+})
+
+//Dashboard component
+const Dashboard = Vue.component('Dashboard', {
+  template:'#dashboard',
+  name: 'dashboard',
+  methods: {
+    signOut() {
+      this.$store.dispatch('signOut')
+      firebaseApp.auth().signOut()
+    }
+  },
+  mounted() {
+    eventsRef.on('value', snap => {
+      let events = []
+      snap.forEach(event => {
+        events.push(event.val())
+      })
+      this.$store.dispatch('setEvents', events)
+    })
+  }
+})
+
+//Signin component
+const SignIn = Vue.component('SignIn', {
+  template:'#signin',
+  name: 'signin',
+  data() {
+    return {
+      email: '',
+      password: '',
+      error: {
+        message: ''
+      }
+    }
+  },
+  methods: {
+    signIn() {
+      firebaseApp.auth().signInWithEmailAndPassword(this.email, this.password)
+        .catch(error => {
+          this.error = error
+        })
+    }
+  }
+})
+
+//Signup component
+const SignUp = Vue.component('SignUp', {
+  template:'#signup',
+  name: 'signup',
+  data() {
+    return {
+      email: '',
+      password: '',
+      error: {
+        message: ''
+      }
+    }
+  },
+  methods: {
+    signUp() {
+      firebaseApp.auth().createUserWithEmailAndPassword(this.email, this.password)
+        .catch(error => {
+          this.error = error
+        })
+    }
+  }
+})
+
+// VUEX Parts
+Vue.use(Vuex);
+
+// Mutation Types
+/* const types = {SIGN_IN,SIGN_OUT,SET_EVENTS}
+const SIGN_IN = 'SIGN_IN'
+const SIGN_OUT = 'SIGN_OUT'
+const SET_EVENTS = 'SET_EVENTS' */
+const types = {
+	SIGN_IN : 'SIGN_IN',
+  SIGN_OUT : 'SIGN_OUT',
+  SET_EVENTS : 'SET_EVENTS'
+}
+
+// Actions
+//const actions = {signIn,signOut,setEvents}
+/* const signIn = ({commit}, user_payload) => {
+  commit(types.SIGN_IN, user_payload)
+} */
+
+/* const signOut = ({commit}) => {
+  commit(types.SIGN_OUT)
+} */
+
+/* const setEvents = ({commit}, events_payload) => {
+  commit(types.SET_EVENTS, events_payload)
+} */
+
+const store = new Vuex.Store({
+  state:{
+  	user: {},
+    events:[]
+  },
+  mutations: {
+  	[types.SIGN_IN] (state, user_payload) {
+    	state.user = user_payload
+  	},
+    [types.SIGN_OUT] (state) {
+      state.user = {}
+    },
+    [types.SET_EVENTS] (state, events_payload) {
+      state.events = events_payload
+    },
+  },
+  actions: {
+  	signIn({commit}, user_payload){
+  		commit(types.SIGN_IN, user_payload)
+		},
+  	signOut({commit}){
+  		commit(types.SIGN_OUT)
+		},
+    setEvents({commit}, events_payload){
+  		commit(types.SET_EVENTS, events_payload)
+		}
+  }, 
+  /* types: {
+    SIGN_IN : 'SIGN_IN',
+    SIGN_OUT : 'SIGN_OUT',
+      SET_EVENTS : 'SET_EVENTS'
+  } */
+})
+
+// Mutations
+/* const mutations = {
+  [types.SIGN_IN] (state, user_payload) {
+    state.user = user_payload
+  },
+
+  [types.SIGN_OUT] (state) {
+    state.user = {}
+  },
+
+  [types.SET_EVENTS] (state, events_payload) {
+    state.events = events_payload
+  }
+} */
+
+/* const state = {
+  user: {},
+  events: []
+} */
+
+
+/* const Dashboard = {
+    template: '#dashboard'
+} */
+/* const SignIn = {
+    template: '#signin'
+} */
+/* const SignUp = {
+    template: '#signup'
+} */
+
+//Router part
+Vue.use(VueRouter)
+
+const router = new VueRouter({
+  mode: 'history',
+  routes: [
+    { path: '/dashboard', component: Dashboard },
+    { path: '/signin', component: SignIn },
+    { path: '/signup', component: SignUp }
+  ]
+})
+
+firebaseApp.auth().onAuthStateChanged(user => {
+  if (user) {
+    store.dispatch('signIn', user)
+    router.push('/dashboard')
+  } else {
+    router.replace('/signin')
+  }
+})
+
+const App = {
+    template: '#main-app'
+}
+
+// Implement Vue initially
+new Vue({
+  el: '#app',
+  router,
+  store,
+  render: h => h(App)
+})
+
+//Main App
+Vue.component('App', {
+  template:'#main-app',
+  name: 'app',
+})
+
