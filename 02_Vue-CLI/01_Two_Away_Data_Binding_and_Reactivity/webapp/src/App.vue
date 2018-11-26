@@ -6,7 +6,11 @@
       <!-- Show data variable information -->           
       <hr/>
        Show data variable information: 
-      <pre>{{ $data }}</pre>
+      <pre>
+        {{ $data }}
+        Window height: {{ windowHeight }}
+        {{ txt }}
+      </pre>        
   </div>
 </template>
 
@@ -15,9 +19,25 @@ export default {
   name: "app",
   data() {
     return {
-      message: "Hello World with Vue.js"
+      message: "Hello World with Vue.js",
+      windowHeight: 0,
+      txt: ''
     };
-  }
+  },
+  watch: {
+    windowHeight(newHeight, oldHeight) {
+     this.txt = `it changed to ${newHeight} from ${oldHeight}`;
+    }
+  },
+  mounted:
+    function() {
+      this.$nextTick(() => {
+        window.addEventListener('resize', () => {
+          this.windowHeight = window.innerHeight
+        });
+      })
+    }
+  ,
 };
 </script>
 
